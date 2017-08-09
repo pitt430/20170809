@@ -128,7 +128,55 @@ namespace ParseParcel.NUnit.Tests
         }
 
         //range for large box
+        public void ParcelCost_L400_B300_H201_W1_OutputLarge()
+        {
+            var item = new ParcelItem(400, 300, 201, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(8.5, item.Cost);
+            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+        }
 
+        public void ParcelCost_L400_B301_H200_W1_OutputLarge()
+        {
+            var item = new ParcelItem(400, 301, 200, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(8.5, item.Cost);
+            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+        }
+
+        public void ParcelCost_L401_B300_H200_W1_OutputLarge()
+        {
+            var item = new ParcelItem(401, 300, 200, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(8.5, item.Cost);
+            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+        }
+
+        public void ParcelCost_L600_B400_H250_W1_OutputLarge()
+        {
+            var item = new ParcelItem(600, 400, 250, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(8.5, item.Cost);
+            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+        }
+
+        //Range out of space
+
+        public void ParcelCost_L601_B400_H250_W1_OutputNone()
+        {
+            var item = new ParcelItem(600, 400, 250, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(0, item.Cost);
+            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+        }
+
+        public void ParcelCost_L600_B401_H250_W1_OutputNone()
+        {
+            var item = new ParcelItem(600, 401, 250, 1);
+            var result = costGenreator.GetParcelCost(item);
+            Assert.AreEqual(8.5, item.Cost);
+            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+        }
 
 
     }
