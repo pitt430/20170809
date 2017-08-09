@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
 namespace ParseParcel
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             while (true)
             {

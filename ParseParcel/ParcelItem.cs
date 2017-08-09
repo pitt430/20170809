@@ -23,8 +23,4 @@ namespace ParseParcel
             Weight = weight;
         }
     }
-
-
-
-
 }
