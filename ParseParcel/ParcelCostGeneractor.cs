@@ -27,7 +27,7 @@ namespace ParseParcel
               return noSolution;
             }
             var allPackageTypes = _packageTypeProvider.LoadPackageTypes();
-            var matchedPackageType = allPackageTypes.Find(a => CheckDeminsionAdapable(item.Dimension, a.Dimension));
+            var matchedPackageType = allPackageTypes.Find(package => CheckDeminsionAdapable(item.Dimension, package.Dimension));
             if (matchedPackageType != null)
             {
                 return matchedPackageType;

@@ -21,18 +21,18 @@ namespace ParseParcel
                 try
                 {
                     Console.Write("Length(mm):");
-                    var length = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Length(mm):");
-                    var breadth = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Length(mm):");
-                    var height = Convert.ToInt32(Console.ReadLine());
+                    var length = Convert.ToDecimal(Console.ReadLine());
+                    Console.Write("Breadth(mm):");
+                    var breadth = Convert.ToDecimal(Console.ReadLine());
+                    Console.Write("Height(mm):");
+                    var height = Convert.ToDecimal(Console.ReadLine());
                     Console.Write("Weight(kg):");
-                    var weight = Convert.ToInt32(Console.ReadLine());
+                    var weight = Convert.ToDecimal(Console.ReadLine());
                     
                     var parcel = new ParcelItem(length, breadth, height, weight);
                     var packageType = container.Resolve<ICostGenerator>().GetCost(parcel);
                     
-                    Console.WriteLine($"Package Size: {packageType.PackageSize.ToString()}, Cost: ${packageType.Cost}");
+                    Console.WriteLine($"Package Size: {packageType.PackageSize}, Cost: ${packageType.Cost}");
                 }
                 catch (Exception ex)
                 {
