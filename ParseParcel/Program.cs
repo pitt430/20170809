@@ -25,9 +25,13 @@ namespace ParseParcel
                     var height = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Weight(kg):");
                     var weight = Convert.ToInt32(Console.ReadLine());
+                    
+                    var parcel = new ParcelItem(length, breadth, height, weight);
 
-                    var parcelCostGenerator = new ParcelCostGenerator();
-                    var packageType = parcelCostGenerator.GetParcelCost(new ParcelItem(length, breadth, height, weight));
+                    var container = new UnityContainer();
+                    container.RegisterType<ICostGenerator, ParcelCostGenerator>();
+                    var packageType = container.Resolve<ICostGenerator>().GetParcelCost(parcel);
+                    
                     Console.WriteLine(string.Format("Package Size: {0}, Cost: ${1}", packageType.PackageSize.ToString(), packageType.Cost));
                 }
                 catch (Exception ex)
