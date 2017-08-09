@@ -9,7 +9,7 @@ namespace ParseParcel
     public class ParcelItem
     {
         public Dimension Dimension { get; set; }
-        public int Cost { get; set; }
+        public double Cost { get; set; }
         public int Weight { get; set; }
 
         public ParcelItem(int length, int breadth, int height, int weight)
@@ -24,10 +24,7 @@ namespace ParseParcel
         }
     }
 
-    public enum EnumPackageOption
-    {
-        Small,Medium,Large
-    }
+
 
 
 }

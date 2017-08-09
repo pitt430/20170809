@@ -25,8 +25,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item =new ParcelItem(0,0,0,0);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0,item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0,result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
 
@@ -35,8 +35,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(601, 1, 1, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0, item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0, result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
         [Test]
@@ -44,8 +44,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(1, 601, 1, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0, item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0, result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
         [Test]
@@ -53,8 +53,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(1, 1, 601, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0, item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0, result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
         [Test]
@@ -62,8 +62,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(1, 1, 601, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0, item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0, result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
         //Range in samll box
@@ -72,8 +72,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(1, 1, 1, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Small, item.PackageOption);
+            Assert.AreEqual(5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Small, result.PackageSize);
         }
 
         [Test]
@@ -81,8 +81,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(300, 200, 150, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Small, item.PackageOption);
+            Assert.AreEqual(5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Small, result.PackageSize);
         }
 
         [Test]
@@ -90,8 +90,8 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(300, 200, 150, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Small, item.PackageOption);
+            Assert.AreEqual(5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Small, result.PackageSize);
         }
 
         //Range in Medium box
@@ -99,32 +99,32 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(300, 201, 150, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(7.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Medium, item.PackageOption);
+            Assert.AreEqual(7.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Medium, result.PackageSize);
         }
 
         public void ParcelCost_L300_B200_H151_W1_OutputMedium()
         {
             var item = new ParcelItem(300, 200, 151, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(7.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Medium, item.PackageOption);
+            Assert.AreEqual(7.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Medium, result.PackageSize);
         }
 
         public void ParcelCost_L301_B200_H150_W1_OutputMedium()
         {
             var item = new ParcelItem(301, 200, 150, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(7.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Medium, item.PackageOption);
+            Assert.AreEqual(7.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Medium, result.PackageSize);
         }
 
         public void ParcelCost_L400_B300_H200_W1_OutputMedium()
         {
             var item = new ParcelItem(400, 300, 200, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(7.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Medium, item.PackageOption);
+            Assert.AreEqual(7.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Medium, result.PackageSize);
         }
 
         //range for large box
@@ -132,32 +132,32 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(400, 300, 201, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(8.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+            Assert.AreEqual(8.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Large, result.PackageSize);
         }
 
         public void ParcelCost_L400_B301_H200_W1_OutputLarge()
         {
             var item = new ParcelItem(400, 301, 200, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(8.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+            Assert.AreEqual(8.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Large, result.PackageSize);
         }
 
         public void ParcelCost_L401_B300_H200_W1_OutputLarge()
         {
             var item = new ParcelItem(401, 300, 200, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(8.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+            Assert.AreEqual(8.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Large, result.PackageSize);
         }
 
         public void ParcelCost_L600_B400_H250_W1_OutputLarge()
         {
             var item = new ParcelItem(600, 400, 250, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(8.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+            Assert.AreEqual(8.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Large, result.PackageSize);
         }
 
         //Range out of space
@@ -166,16 +166,16 @@ namespace ParseParcel.NUnit.Tests
         {
             var item = new ParcelItem(600, 400, 250, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(0, item.Cost);
-            Assert.AreEqual(EnumPackageOption.None, item.PackageOption);
+            Assert.AreEqual(0, result.Cost);
+            Assert.AreEqual(EnumPackageSize.None, result.PackageSize);
         }
 
         public void ParcelCost_L600_B401_H250_W1_OutputNone()
         {
             var item = new ParcelItem(600, 401, 250, 1);
             var result = costGenreator.GetParcelCost(item);
-            Assert.AreEqual(8.5, item.Cost);
-            Assert.AreEqual(EnumPackageOption.Large, item.PackageOption);
+            Assert.AreEqual(8.5, result.Cost);
+            Assert.AreEqual(EnumPackageSize.Large, result.PackageSize);
         }
 
 

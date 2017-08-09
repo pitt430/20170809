@@ -9,7 +9,7 @@ namespace ParseParcel
 {
     public interface ICostGenerator
     {
-        ParcelItem GetParcelCost(ParcelItem item);
+        PackageType GetParcelCost(ParcelItem item);
 
         List<PackageType> LoadPackageTypes();
     }

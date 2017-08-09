@@ -12,5 +12,12 @@ namespace ParseParcel
         public Dimension Dimension { get; set; }
 
         public double Cost { get; set; }
+
+        public EnumPackageSize PackageSize { get; set; }
+    }
+
+    public enum EnumPackageSize
+    {
+        None,Small, Medium, Large
     }
 }
