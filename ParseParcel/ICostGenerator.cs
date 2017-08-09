@@ -9,6 +9,6 @@ namespace ParseParcel
 {
     public interface ICostGenerator
     {
-        PackageType GetCost(ParcelItem item);
+        PackageTypeBase GetCost(ParcelItem item);
     }
 }

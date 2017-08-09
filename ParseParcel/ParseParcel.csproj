@@ -59,7 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoxPackageTypeFactory.cs" />
     <Compile Include="IPackageTypeProvider.cs" />
+    <Compile Include="PackageTypeBase.cs" />
+    <Compile Include="PackageTypeFactory.cs" />
     <Compile Include="PackageTypeProviderMemory.cs" />
     <Compile Include="ParcelCostGeneractor.cs" />
     <Compile Include="Dimension.cs" />

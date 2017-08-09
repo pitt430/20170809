@@ -9,25 +9,26 @@ namespace ParseParcel
     public class ParcelCostGenerator : ICostGenerator
     {
         private readonly IPackageTypeProvider _packageTypeProvider;
+        private readonly PackageTypeFactory _packageTypeFactory;
 
-        public ParcelCostGenerator(IPackageTypeProvider packageTypeProvider)
+        public ParcelCostGenerator(IPackageTypeProvider packageTypeProvider, PackageTypeFactory packageTypeFactory)
         {
             _packageTypeProvider = packageTypeProvider;
+            _packageTypeFactory = packageTypeFactory;
         }
 
-        public PackageType GetCost(ParcelItem item)
+        public PackageTypeBase GetCost(ParcelItem item)
         {
-            var noSolution = new PackageType()
-            {
-                PackageSize = EnumPackageSize.None,
-                Cost = 0
-            };
+            var noSolution = _packageTypeFactory.GetPackageType();
+            noSolution.PackageSize = EnumPackageSize.None;
+            noSolution.Cost = 0;
+
             if (item.Weight > 25)
             {
               return noSolution;
             }
-            var allPackageTypes = _packageTypeProvider.LoadPackageTypes();
-            var matchedPackageType = allPackageTypes.Find(package => CheckDeminsionAdapable(item.Dimension, package.Dimension));
+            var allPackageTypes = _packageTypeProvider.LoadPackageTypes().OrderBy(a=>a.Cost);
+            var matchedPackageType = allPackageTypes.Find(package => package.CanContain(item.Dimension));
             if (matchedPackageType != null)
             {
                 return matchedPackageType;
@@ -38,23 +39,7 @@ namespace ParseParcel
             }
         }
 
-        private bool CheckDeminsionAdapable(Dimension dimensionItem, Dimension dimensionBox)
-        {
-            var dimensionItemList = new List<decimal> {dimensionItem.Length, dimensionItem.Breadth, dimensionItem.Height};
-            var dimentsionBoxList=new List<decimal> { dimensionBox.Length, dimensionBox.Breadth, dimensionBox.Height};
-            dimensionItemList.Sort();
-            dimentsionBoxList.Sort();
 
-            var result = true;
-            for (int listCount = 0; listCount < dimensionItemList.Count; listCount++)
-            {
-                if (dimensionItemList[listCount] > dimentsionBoxList[listCount] || dimensionItemList[listCount]<=0)
-                {
-                    result = false;
-                }
-            }
-            return result;
-        }
        
 
     }

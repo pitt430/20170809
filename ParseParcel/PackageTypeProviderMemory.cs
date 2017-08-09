@@ -8,43 +8,44 @@ namespace ParseParcel
 {
     public class PackageTypeProviderMemory:IPackageTypeProvider
     {
-        public List<PackageType> LoadPackageTypes()
+        private readonly PackageTypeFactory _packageTypeFactory;
+        public PackageTypeProviderMemory(PackageTypeFactory packageTypeFactory)
         {
-            var result = new List<PackageType>();
-            result.Add(new PackageType()
+            _packageTypeFactory = packageTypeFactory;
+        }
+        public List<PackageTypeBase> LoadPackageTypes()
+        {
+            var result = new List<PackageTypeBase>();
+            var packageType = _packageTypeFactory.GetPackageType();
+            packageType.Dimension = new Dimension()
             {
-                Dimension = new Dimension()
-                {
-                    Length = 200,
-                    Breadth = 300,
-                    Height = 150
-                },
-                Cost = 5,
-                PackageSize = EnumPackageSize.Small
-            });
+                Length = 200,
+                Breadth = 300,
+                Height = 150
+            };
+            packageType.Cost = 5;
+            packageType.PackageSize = EnumPackageSize.Small;
+            result.Add(packageType);
 
-            result.Add(new PackageType()
+            packageType.Dimension = new Dimension()
             {
-                Dimension = new Dimension()
-                {
-                    Length = 300,
-                    Breadth = 400,
-                    Height = 200
-                },
-                Cost = 7.5,
-                PackageSize = EnumPackageSize.Medium
-            });
-            result.Add(new PackageType()
+                Length = 300,
+                Breadth = 400,
+                Height = 200
+            };
+            packageType.Cost = 7.5m;
+            packageType.PackageSize = EnumPackageSize.Medium;
+            result.Add(packageType);
+
+            packageType.Dimension = new Dimension()
             {
-                Dimension = new Dimension()
-                {
-                    Length = 400,
-                    Breadth = 600,
-                    Height = 250
-                },
-                Cost = 8.5,
-                PackageSize = EnumPackageSize.Large
-            });
+                Length = 400,
+                Breadth = 600,
+                Height = 250
+            };
+            packageType.Cost = 8.5m;
+            packageType.PackageSize = EnumPackageSize.Large;
+            result.Add(packageType);
 
             return result;
         }

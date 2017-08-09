@@ -7,17 +7,27 @@ using System.Threading.Tasks;
 
 namespace ParseParcel
 {
-    public class PackageType
+    public class BoxPackageType: PackageTypeBase
     {
-        public Dimension Dimension { get; set; }
+        public override bool CanContain(ParcelItem parcelItem)
+        {
+            var dimensionItemList = new List<decimal> { Dimension.Length, Dimension.Breadth, Dimension.Height };
+            var dimentsionBoxList = new List<decimal> { parcelItem.Dimension.Length, parcelItem.Dimension.Breadth, parcelItem.Dimension.Height };
+            dimensionItemList.Sort();
+            dimentsionBoxList.Sort();
 
-        public double Cost { get; set; }
-
-        public EnumPackageSize PackageSize { get; set; }
+            var result = true;
+            for (int listCount = 0; listCount < dimensionItemList.Count; listCount++)
+            {
+                if (dimensionItemList[listCount] > dimentsionBoxList[listCount] || dimensionItemList[listCount] <= 0)
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
     }
 
-    public enum EnumPackageSize
-    {
-        None,Small, Medium, Large
-    }
+   
 }

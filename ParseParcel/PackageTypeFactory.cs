@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ParseParcel
 {
-    public interface IPackageTypeProvider
+    public abstract class PackageTypeFactory
     {
-        List<PackageTypeBase> LoadPackageTypes();
+        public abstract PackageTypeBase GetPackageType();
     }
 }
