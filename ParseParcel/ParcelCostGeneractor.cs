@@ -28,7 +28,7 @@ namespace ParseParcel
               return noSolution;
             }
             var allPackageTypes = _packageTypeProvider.LoadPackageTypes().OrderBy(a=>a.Cost);
-            var matchedPackageType = allPackageTypes.Find(package => package.CanContain(item.Dimension));
+            var matchedPackageType = allPackageTypes.First(package => package.CanContain(item));
             if (matchedPackageType != null)
             {
                 return matchedPackageType;

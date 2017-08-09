@@ -19,7 +19,7 @@ namespace ParseParcel.NUnit.Tests
         public void Setup()
         {
             _container.RegisterType<ICostGenerator, ParcelCostGenerator>();
-            _container.RegisterType<IPackageTypeProvider, PackageTypeProviderMemory>();
+            _container.RegisterType<IPackageTypeProvider, PackageTypeProviderMemory>().RegisterType<PackageTypeFactory, BoxPackageTypeFactory>();
         }
 
 

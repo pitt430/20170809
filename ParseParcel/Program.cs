@@ -15,7 +15,7 @@ namespace ParseParcel
         {
             var container = new UnityContainer();
             container.RegisterType<ICostGenerator, ParcelCostGenerator>();
-            container.RegisterType<IPackageTypeProvider, PackageTypeProviderMemory>();
+            container.RegisterType<IPackageTypeProvider, PackageTypeProviderMemory>().RegisterType<PackageTypeFactory,BoxPackageTypeFactory>();
             while (true)
             {
                 try

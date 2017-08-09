@@ -11,8 +11,8 @@ namespace ParseParcel
     {
         public override bool CanContain(ParcelItem parcelItem)
         {
-            var dimensionItemList = new List<decimal> { Dimension.Length, Dimension.Breadth, Dimension.Height };
-            var dimentsionBoxList = new List<decimal> { parcelItem.Dimension.Length, parcelItem.Dimension.Breadth, parcelItem.Dimension.Height };
+            var dimentsionBoxList = new List<decimal> { Dimension.Length, Dimension.Breadth, Dimension.Height };
+            var  dimensionItemList = new List<decimal> { parcelItem.Dimension.Length, parcelItem.Dimension.Breadth, parcelItem.Dimension.Height };
             dimensionItemList.Sort();
             dimentsionBoxList.Sort();
 
