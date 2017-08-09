@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParcelCostGeneractor.cs" />
+    <Compile Include="Dimension.cs" />
+    <Compile Include="ICostGenerator.cs" />
+    <Compile Include="PackageType.cs" />
+    <Compile Include="ParcelItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

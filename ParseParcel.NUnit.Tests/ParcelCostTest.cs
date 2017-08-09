@@ -17,7 +17,7 @@ namespace ParseParcel.NUnit.Tests
         public void Setup()
         {
             costGenreator = new ParcelCostGenerator();
-            costGenreator.LoadPackageOptions();
+            costGenreator.LoadPackageTypes();
         }
 
         [Test]
