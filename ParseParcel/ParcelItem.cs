@@ -9,7 +9,6 @@ namespace ParseParcel
     public class ParcelItem
     {
         public Dimension Dimension { get; set; }
-        public decimal Cost { get; set; }
         public decimal Weight { get; set; }
 
         public ParcelItem(decimal length, decimal breadth, decimal height, decimal weight)

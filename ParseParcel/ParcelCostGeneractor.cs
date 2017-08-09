@@ -8,19 +8,25 @@ namespace ParseParcel
 {
     public class ParcelCostGenerator : ICostGenerator
     {
+        private readonly IPackageTypeProvider _packageTypeProvider;
 
-        public PackageType GetParcelCost(ParcelItem item)
+        public ParcelCostGenerator(IPackageTypeProvider packageTypeProvider)
         {
+            _packageTypeProvider = packageTypeProvider;
+        }
 
+        public PackageType GetCost(ParcelItem item)
+        {
+            var noSolution = new PackageType()
+            {
+                PackageSize = EnumPackageSize.None,
+                Cost = 0
+            };
             if (item.Weight > 25)
             {
-                return new PackageType()
-                {
-                    PackageSize = EnumPackageSize.None,
-                    Cost = 0
-                };
+              return noSolution;
             }
-            var allPackageTypes = LoadPackageTypes();
+            var allPackageTypes = _packageTypeProvider.LoadPackageTypes();
             var matchedPackageType = allPackageTypes.Find(a => CheckDeminsionAdapable(item.Dimension, a.Dimension));
             if (matchedPackageType != null)
             {
@@ -28,15 +34,11 @@ namespace ParseParcel
             }
             else
             {
-                return new PackageType()
-                {
-                    PackageSize = EnumPackageSize.None,
-                    Cost = 0
-                };
+                return noSolution;
             }
         }
 
-        public bool CheckDeminsionAdapable(Dimension dimensionItem, Dimension dimensionBox)
+        private bool CheckDeminsionAdapable(Dimension dimensionItem, Dimension dimensionBox)
         {
             var dimensionItemList = new List<decimal> {dimensionItem.Length, dimensionItem.Breadth, dimensionItem.Height};
             var dimentsionBoxList=new List<decimal> { dimensionBox.Length, dimensionBox.Breadth, dimensionBox.Height};
@@ -53,47 +55,7 @@ namespace ParseParcel
             }
             return result;
         }
-        
-        public List<PackageType> LoadPackageTypes()
-        {
-            var result=new List<PackageType>();
-            result.Add(new PackageType()
-            {
-               Dimension = new Dimension()
-                {
-                    Length = 200,
-                    Breadth = 300,
-                    Height = 150
-                },
-               Cost = 5,
-               PackageSize = EnumPackageSize.Small
-            });
-
-            result.Add(new PackageType()
-            {
-                Dimension = new Dimension()
-                {
-                    Length = 300,
-                    Breadth = 400,
-                    Height = 200
-                },
-                Cost = 7.5,
-                PackageSize = EnumPackageSize.Medium
-            });
-            result.Add(new PackageType()
-            {
-                Dimension = new Dimension()
-                {
-                    Length = 400,
-                    Breadth = 600,
-                    Height = 250
-                },
-                Cost = 8.5,
-                PackageSize = EnumPackageSize.Large
-            });
-
-            return result;
-        }
+       
 
     }
 }
