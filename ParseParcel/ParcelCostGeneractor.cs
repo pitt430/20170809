@@ -38,8 +38,8 @@ namespace ParseParcel
 
         public bool CheckDeminsionAdapable(Dimension dimensionItem, Dimension dimensionBox)
         {
-            var dimensionItemList = new List<int> {dimensionItem.Length, dimensionItem.Breadth, dimensionItem.Height};
-            var dimentsionBoxList=new List<int> { dimensionBox.Length, dimensionBox.Breadth, dimensionBox.Height};
+            var dimensionItemList = new List<decimal> {dimensionItem.Length, dimensionItem.Breadth, dimensionItem.Height};
+            var dimentsionBoxList=new List<decimal> { dimensionBox.Length, dimensionBox.Breadth, dimensionBox.Height};
             dimensionItemList.Sort();
             dimentsionBoxList.Sort();
 

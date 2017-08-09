@@ -8,8 +8,8 @@ namespace ParseParcel
 {
     public class Dimension
     {
-        public int Length { get; set; }
-        public int Breadth { get; set; }
-        public int Height { get; set; }
+        public decimal Length { get; set; }
+        public decimal Breadth { get; set; }
+        public decimal Height { get; set; }
     }
 }

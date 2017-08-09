@@ -9,10 +9,10 @@ namespace ParseParcel
     public class ParcelItem
     {
         public Dimension Dimension { get; set; }
-        public double Cost { get; set; }
-        public int Weight { get; set; }
+        public decimal Cost { get; set; }
+        public decimal Weight { get; set; }
 
-        public ParcelItem(int length, int breadth, int height, int weight)
+        public ParcelItem(decimal length, decimal breadth, decimal height, decimal weight)
         {
             Dimension=new Dimension()
             {
